@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Composition API Example</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" :value="username" />
+      <p>Username: {{ username }}</p>
+      <button @click="updateUsername">Click me!</button>
+      <span :style="{'color': statusColor}">{{status}}</span>
+    </div>
+
+    <script>
+      const { createApp, ref, computed } = Vue;
+
+      createApp({
+        setup() {
+          let status = ref("active");
+          const username = ref("John Doe");
+          const updateName = () => {
+            name.value = "abc"; // Update name to reflect input changes
+          };
+          const updateUsername = () => {
+            username.value = "Johnny Doe!";
+            if (status.value === "active") {
+              status.value = "pending";
+            } else if (status.value === "pending") {
+              status.value = "inactive";
+            } else status.value = "active";
+          };
+          const statusColor = computed(() => {
+            switch (status.value) {
+              case "active":
+                return "green";
+              case "inactive":
+                return "red";
+              case "pending":
+                return "yellow";
+              default:
+                return "black";
+            }
+          });
+          const statusColor2 = () => "green";
+
+          return {
+            username,
+            updateUsername,
+            status,
+            statusColor,
+            statusColor2,
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
+
+<!-- 
+  Computed functions are used when you need to derive (calculate or obtain) a value based on other reactive values 
+  AND you want that value to update automatically when the dependencies change, not when an user calls them explicitely.
+    Usually returns things, usually values that depend on reactive data. !!
+    Does this function need to update automatically when the dependencies change? !!
+    Is this function's primary purpose to calculate or derive a value based on other reactive data?
+
+
+
+Normal functions are used when you need to perform an action or side effect, 
+  and you want that action to be triggered explicitly, 
+  such as when a user clicks on a button or interacts with the application in some way.
+
+  Will this function be called explicitly by the user or by another part of the code?  !! 
+  -->

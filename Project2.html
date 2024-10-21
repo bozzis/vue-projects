@@ -112,7 +112,7 @@
               console.log("Photo Added!");
               let id = availableIds.length ? availableIds.shift() : nextId++;
               const photo = {
-                id, // photos.value.length + 1 tbm daria, mas n mto bom
+                id,
                 url: newPhotoUrl.value,
                 isFavorite: false,
               };
@@ -132,7 +132,7 @@
             }
           };
           const removePhoto = (index) => {
-            availableIds.push(photos.value[index]["id"]); //availableIds.push(photos.value[index].id); tambem funciona
+            availableIds.push(photos.value[index]["id"]); //availableIds.push(photos.value[index].id); also works
             availableIds.sort((a, b) => a - b);
             console.log(availableIds);
 
@@ -159,19 +159,3 @@
     </script>
   </body>
 </html>
-
-<!-- 
-  Computed functions are used when you need to derive (calculate or obtain) a value based on other reactive values 
-  AND you want that value to update automatically when the dependencies change, not when an user calls them explicitely.
-    Usually returns things, usually values that depend on reactive data. !!
-    Does this function need to update automatically when the dependencies change? !!
-    Is this function's primary purpose to calculate or derive a value based on other reactive data?
-
-
-
-Normal functions are used when you need to perform an action or side effect, 
-  and you want that action to be triggered explicitly, 
-  such as when a user clicks on a button or interacts with the application in some way.
-
-  Will this function be called explicitly by the user or by another part of the code?  !! 
-  -->
