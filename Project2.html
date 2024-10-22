@@ -95,11 +95,13 @@
         setup() {
           // Keep track of the list of photos
           // We need a ref for the currently entered URL
+
           // const updateUrl = () => {
           //   console.log("Check!");
           //   photos.value[0].url =
           //     "https://images.unsplash.com/photo-1727175078650-7cb1a883280d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1fHx8ZW58MHx8fHx8";
           // };
+
           const photos = ref([]);
           const newPhotoUrl = ref("");
           const freezedUrl = ref("");
@@ -149,7 +151,7 @@
             addPhoto,
             photos,
             newPhotoUrl,
-            updateUrl,
+            // updateUrl,
             toggleFavorite,
             removePhoto,
           };
